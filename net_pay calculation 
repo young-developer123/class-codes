@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+
+// Function to calculate net pay
+double calculateNetPay(double hoursWorked, double hourlyWage) {
+    const double BASE_HOURS = 40.0;
+    const double OVERTIME_RATE = 1.5;
+    const double TAX_THRESHOLD = 600.0;
+    const double TAX_RATE1 = 0.15;
+    const double TAX_RATE2 = 0.20;
+
+    double grossPay, tax, netPay;
+
+    // Calculate gross pay
+    if (hoursWorked <= BASE_HOURS) {
+        grossPay = hoursWorked * hourlyWage;
+    } else {
+        double overtimeHours = hoursWorked - BASE_HOURS;
+        grossPay = (BASE_HOURS * hourlyWage) + (overtimeHours * hourlyWage * OVERTIME_RATE);
+    }
+
+    // Calculate tax
+    if (grossPay <= TAX_THRESHOLD) {
+        tax = grossPay * TAX_RATE1;
+    } else {
+        tax = (TAX_THRESHOLD * TAX_RATE1) + ((grossPay - TAX_THRESHOLD) * TAX_RATE2);
+    }
+
+    // Net pay
+    netPay = grossPay - tax;
+
+    // Display results
+    cout << "Gross Pay: $" << grossPay << endl;
+    cout << "Taxes: $" << tax << endl;
+
+    return netPay;
+}
+
+int main() {
+    double hours, wage;
+
+    // Input
+    cout << "Enter hours worked in a week: ";
+    cin >> hours;
+
+    cout << "Enter hourly wage: ";
+    cin >> wage;
+
+    // Calculate and display net pay
+    double net = calculateNetPay(hours, wage);
+    cout << "Net Pay: $" << net << endl;
+
+    return 0;
+}
