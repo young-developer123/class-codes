@@ -1,7 +1,13 @@
+/*
+	NAME: ELIJAH MUSEMBI
+	REG NO.: BSE-05-0111/2024
+	DESCRIPTION: CPP CODE FOR NET_PAY CALCULATION 
+*/
 #include <iostream>
 using namespace std;
 
 // Function to calculate net pay
+
 double calculateNetPay(double hoursWorked, double hourlyWage) {
     const double BASE_HOURS = 40.0;
     const double OVERTIME_RATE = 1.5;
@@ -12,6 +18,7 @@ double calculateNetPay(double hoursWorked, double hourlyWage) {
     double grossPay, tax, netPay;
 
     // Calculate gross pay
+
     if (hoursWorked <= BASE_HOURS) {
         grossPay = hoursWorked * hourlyWage;
     } else {
@@ -20,6 +27,7 @@ double calculateNetPay(double hoursWorked, double hourlyWage) {
     }
 
     // Calculate tax
+
     if (grossPay <= TAX_THRESHOLD) {
         tax = grossPay * TAX_RATE1;
     } else {
@@ -30,6 +38,7 @@ double calculateNetPay(double hoursWorked, double hourlyWage) {
     netPay = grossPay - tax;
 
     // Display results
+
     cout << "Gross Pay: $" << grossPay << endl;
     cout << "Taxes: $" << tax << endl;
 
@@ -47,6 +56,7 @@ int main() {
     cin >> wage;
 
     // Calculate and display net pay
+
     double net = calculateNetPay(hours, wage);
     cout << "Net Pay: $" << net << endl;
 
